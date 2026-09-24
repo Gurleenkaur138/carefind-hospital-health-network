@@ -1,0 +1,690 @@
+/* CareFind Modern Hospital CSS Stylesheet */
+
+:root {
+  --primary: #0f4c3a;          /* Deep Emerald Green Accent */
+  --primary-hover: #083427;    /* Dark Deep Forest Green */
+  --primary-light: #e6f4f0;    /* Soft Mint Green Cream Tint */
+  --teal: #15803d;             /* Vibrant Emerald Green */
+  --teal-hover: #166534;       /* Deep Leaf Green */
+  --teal-light: #dcfce7;       /* Soft Sage Tint */
+  --dark: #0a231c;             /* Deepest Forest Charcoal */
+  --slate: #415a51;            /* Deep Sage Slate */
+  --slate-light: #f2f8f5;      /* Soft Mint Cream */
+  --border: #cee3db;           /* Soft Sage Border */
+  --white: #ffffff;
+  --rose: #dc2626;             /* Crimson ER Accent */
+  --rose-light: #fee2e2;
+  --amber: #d97706;            /* Warm Amber Gold */
+  --shadow-sm: 0 1px 3px 0 rgba(10, 35, 28, 0.05);
+  --shadow-md: 0 4px 12px -2px rgba(10, 35, 28, 0.1), 0 2px 4px -2px rgba(10, 35, 28, 0.04);
+  --shadow-lg: 0 12px 24px -4px rgba(10, 35, 28, 0.15), 0 4px 8px -4px rgba(10, 35, 28, 0.06);
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+body {
+  background-color: #f0f6f3;
+  color: var(--dark);
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header & Navbar */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: var(--white);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.header-container {
+  max-width: 100%;
+  width: 100%;
+  padding: 0 1.5rem;
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.brand-logo-img {
+  width: 2.6rem;
+  height: 2.6rem;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(15, 76, 58, 0.25);
+  border: 1px solid #cee3db;
+}
+
+/* Hospital & Health Network BELOW CareFind */
+.brand-text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.brand-title {
+  font-size: 1.3rem;
+  font-weight: 900;
+  line-height: 1.1;
+  background: linear-gradient(135deg, #0a231c, #15803d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.02em;
+}
+
+.brand-subtitle {
+  font-size: 0.68rem;
+  color: var(--slate);
+  font-weight: 700;
+  display: block;
+  margin-top: 1px;
+}
+
+/* Main Navigation Bar Items */
+.navbar-menu {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.15rem;
+  margin-left: auto; /* Push to far right */
+  padding: 0.25rem 0.35rem;
+  background-color: #e2ede8;
+  border: 1px solid #c4d8d0;
+  border-radius: 16px;
+  box-shadow: inset 0 1px 2px rgba(10, 35, 28, 0.05);
+  white-space: nowrap;
+  overflow: visible !important;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.navbar-menu::-webkit-scrollbar {
+  display: none !important;
+  width: 0;
+  height: 0;
+}
+
+.nav-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 11px;
+  border: none;
+  background: transparent;
+  color: var(--slate);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.85);
+  color: #0f4c3a;
+  box-shadow: 0 1px 3px rgba(10, 35, 28, 0.06);
+}
+
+.nav-item.active {
+  background-color: var(--white);
+  color: var(--primary);
+  font-weight: 800;
+  box-shadow: 0 2px 6px rgba(10, 35, 28, 0.12);
+}
+
+/* 24/7 ER Locator Badge Button inside Navbar */
+.nav-item-er {
+  background-color: var(--rose-light);
+  color: var(--rose);
+  font-weight: 800;
+  border: 1px solid #fca5a5;
+}
+
+.nav-item-er:hover {
+  background-color: var(--rose);
+  color: var(--white);
+  box-shadow: 0 2px 6px rgba(220, 38, 38, 0.25);
+}
+
+.nav-item-er.active {
+  background-color: var(--rose);
+  color: var(--white);
+  font-weight: 800;
+  box-shadow: 0 2px 6px rgba(220, 38, 38, 0.3);
+}
+
+/* NO 3-lines toggle icon */
+.mobile-toggle {
+  display: none !important;
+}
+
+/* Main Layout */
+.main-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem 1.5rem;
+  width: 100%;
+  flex: 1;
+}
+
+.tab-view {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+.tab-view.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero Section */
+.hero-banner {
+  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+  color: var(--white);
+  border-radius: var(--radius-xl);
+  padding: 3.5rem 2.5rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.hero-tag {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(4px);
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-size: 2.4rem;
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.hero-subtitle {
+  font-size: 1rem;
+  opacity: 0.9;
+  max-width: 720px;
+  line-height: 1.6;
+  margin-bottom: 1.75rem;
+}
+
+.hero-search-box {
+  display: flex;
+  gap: 0.75rem;
+  max-width: 600px;
+  background: var(--white);
+  padding: 0.4rem 0.4rem 0.4rem 1rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.hero-search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+  color: var(--dark);
+}
+
+/* Metrics Grid */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.metric-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.metric-num {
+  display: block;
+  font-size: 1.75rem;
+  font-weight: 900;
+  color: var(--primary);
+}
+
+.metric-label {
+  font-size: 0.8rem;
+  color: var(--slate);
+  font-weight: 700;
+}
+
+/* Cards Grid */
+.grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background-color: var(--white);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.card-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.card-meta {
+  font-size: 0.8rem;
+  color: var(--slate);
+  margin-bottom: 0.75rem;
+}
+
+.card-desc {
+  font-size: 0.8rem;
+  color: var(--dark);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.badge-rating {
+  background-color: #fef3c7;
+  color: #b45309;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--white);
+  border: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-teal {
+  background-color: var(--teal);
+  color: var(--white);
+  border: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-teal:hover {
+  background-color: var(--teal-hover);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--dark);
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-outline:hover {
+  background-color: var(--slate-light);
+  border-color: var(--slate);
+}
+
+/* Filter Component */
+.filter-bar {
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.filter-label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--slate);
+  letter-spacing: 0.05em;
+}
+
+.filter-input, .filter-select {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 0.85rem;
+  color: var(--dark);
+  background-color: var(--slate-light);
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.filter-input:focus, .filter-select:focus {
+  border-color: var(--primary);
+  background-color: var(--white);
+}
+
+/* Compare Matrix Table */
+.compare-table-container {
+  overflow-x: auto;
+  background-color: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.875rem;
+}
+
+.compare-table th, .compare-table td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.compare-table th {
+  background-color: var(--slate-light);
+  font-weight: 800;
+  color: var(--slate);
+}
+
+/* 24/7 ER Locator Section Styling */
+.er-banner {
+  background: linear-gradient(135deg, #7f1d1d, #dc2626);
+  color: var(--white);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 10px 30px rgba(220, 38, 38, 0.25);
+}
+
+.er-badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+.er-controls {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.er-filter-btn {
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.er-filter-btn.active {
+  background: var(--rose);
+  color: var(--white);
+  border-color: var(--rose);
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
+}
+
+/* Modal Popup */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.modal-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-box {
+  background-color: var(--white);
+  border-radius: var(--radius-xl);
+  max-width: 500px;
+  width: 100%;
+  padding: 2rem;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.modal-close {
+  background: transparent;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  color: var(--slate);
+}
+
+/* Input with Icon Group matching reference UI mockup */
+.input-icon-group {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  background-color: #ffffff;
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input-icon-group:focus-within {
+  border-color: #1d4ed8;
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15);
+}
+
+.input-icon-badge {
+  background-color: #eff6ff;
+  color: #1d4ed8;
+  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  border-right: 1px solid #e2e8f0;
+  min-width: 48px;
+}
+
+.input-icon-field {
+  border: none !important;
+  outline: none !important;
+  padding: 0.85rem 1rem !important;
+  width: 100%;
+  font-size: 0.95rem;
+  color: #0f172a;
+  background: transparent !important;
+}
+
+.info-alert-box {
+  background-color: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1d4ed8;
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 0.25rem;
+}
+
+.btn-confirm-booking {
+  background-color: #1d4ed8;
+  color: #ffffff;
+  border: none;
+  padding: 0.95rem 1.5rem;
+  border-radius: 14px;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(29, 78, 216, 0.25);
+  margin-top: 0.5rem;
+}
+
+.btn-confirm-booking:hover {
+  background-color: #1e40af;
+  transform: translateY(-1px);
+}
+
+.security-note {
+  font-size: 0.8rem;
+  color: #64748b;
+  text-align: center;
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+/* Footer */
+.site-footer {
+  background-color: #071e18;
+  color: white;
+  border-top: 1px solid #173d32;
+  margin-top: auto;
+}
+
+.footer-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 2rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.footer-bottom {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  border-top: 1px solid #102e26;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #64748b;
+}

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CareFind - Hospital & Health Network</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Sticky Navbar Header -->
+  <header class="site-header">
+    <div class="header-container">
+      
+      <!-- Brand Logo & Stacked Title (Left Side) -->
+      <div class="brand-logo" id="brand-logo">
+        <img src="logo.jpg" alt="CareFind Hospital Logo" class="brand-logo-img" />
+        <div class="brand-text-container">
+          <span class="brand-title">CareFind</span>
+          <span class="brand-subtitle">Hospital & Health Network</span>
+        </div>
+      </div>
+
+      <!-- Main Navigation Bar Items (All 9 Items in Main Navbar Container) -->
+      <nav class="navbar-menu" id="navbar-menu">
+        <button class="nav-item active" data-tab="home">Home</button>
+        <button class="nav-item" data-tab="search">Find Healthcare</button>
+        <button class="nav-item" data-tab="hospitals">Hospitals & Clinics</button>
+        <button class="nav-item" data-tab="doctors">Doctors</button>
+        <button class="nav-item" data-tab="telehealth">Online Consultation</button>
+        <button class="nav-item" data-tab="compare">Compare</button>
+        <button class="nav-item" data-tab="details">Hospital/Doctor Details</button>
+        <button class="nav-item" data-tab="portal" id="nav-portal">Login/Profile</button>
+        <button class="nav-item nav-item-er" data-tab="er" id="btn-er">🚨 24/7 ER Locator</button>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- Main Views Container -->
+  <main class="main-content">
+
+    <!-- 1. HOME VIEW -->
+    <section class="tab-view active" id="tab-home">
+      <div class="hero-banner">
+        <span class="hero-tag">CareFind Health Network</span>
+        <h1 class="hero-title">Find the Right Care, Right When You Need It</h1>
+        <p class="hero-subtitle">
+          Search trusted hospitals and specialist doctors, check emergency availability, book appointments, schedule virtual consultations, and compare healthcare options—all in one place.
+        </p>
+
+        <!-- Quick Search Bar inside Hero -->
+        <div class="hero-search-box">
+          <input type="text" id="hero-keyword" placeholder="Search by condition, doctor, or hospital..." class="hero-search-input" />
+          <button class="btn-primary" id="hero-search-btn">Find Care</button>
+        </div>
+      </div>
+
+      <!-- Quick Metrics Bar -->
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <span class="metric-num">24/7</span>
+          <span class="metric-label">Emergency Response</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-num">150+</span>
+          <span class="metric-label">Verified Specialists</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-num">98.4%</span>
+          <span class="metric-label">Patient Satisfaction</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-num">12 Min</span>
+          <span class="metric-label">Avg ER Wait Time</span>
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+        <h2 style="font-size:1.5rem; font-weight:800;">Featured Hospitals & Trauma Centers</h2>
+        <button class="btn-outline view-all-hospitals-btn">View All Hospitals →</button>
+      </div>
+      <div class="grid-cards" id="home-hospitals">
+        <!-- Dynamically rendered via JS -->
+      </div>
+    </section>
+
+    <!-- 2. FIND HEALTHCARE VIEW -->
+    <section class="tab-view" id="tab-search">
+      <div class="hero-banner" style="background: linear-gradient(135deg, #072e23, #15803d);">
+        <span class="hero-tag">Smart Healthcare Finder</span>
+        <h1 class="hero-title">Find Healthcare Providers & Filter Insurance</h1>
+        <p class="hero-subtitle">Match insurance coverage, search by specialty or city, and book doctor consultations with instant schedule confirmation.</p>
+      </div>
+
+      <!-- Filter Controls -->
+      <div class="filter-bar">
+        <div class="filter-group">
+          <label class="filter-label">Search Keyword</label>
+          <input type="text" id="search-keyword" class="filter-input" placeholder="Doctor name, hospital, condition..." />
+        </div>
+        <div class="filter-group">
+          <label class="filter-label">Specialty</label>
+          <select id="filter-specialty" class="filter-select"></select>
+        </div>
+        <div class="filter-group">
+          <label class="filter-label">City / State</label>
+          <select id="filter-city" class="filter-select"></select>
+        </div>
+        <div class="filter-group">
+          <label class="filter-label">Health Insurance</label>
+          <select id="filter-insurance" class="filter-select"></select>
+        </div>
+      </div>
+
+      <!-- Doctor Results -->
+      <div class="grid-cards" id="doctors-grid"></div>
+    </section>
+
+    <!-- 3. HOSPITALS & CLINICS VIEW -->
+    <section class="tab-view" id="tab-hospitals">
+      <div style="margin-bottom:1.5rem;">
+        <h2 style="font-size:1.75rem; font-weight:900;">Hospitals & Clinics Directory</h2>
+        <p style="color:var(--slate);">Browse accredited medical centers, ICU capacities, and trauma response units across our network.</p>
+      </div>
+      <div class="grid-cards" id="hospitals-grid"></div>
+    </section>
+
+    <!-- 4. DOCTORS VIEW -->
+    <section class="tab-view" id="tab-doctors">
+      <div style="margin-bottom:1.5rem;">
+        <h2 style="font-size:1.75rem; font-weight:900;">Specialist Doctors Directory</h2>
+        <p style="color:var(--slate);">Verified physicians, consultation fees, clinical experience, and patient ratings.</p>
+      </div>
+      <div class="grid-cards" id="doctors-dir-grid"></div>
+    </section>
+
+    <!-- 5. ONLINE CONSULTATION VIEW -->
+    <section class="tab-view" id="tab-telehealth">
+      <div class="hero-banner" style="background: linear-gradient(135deg, #0f4c3a, #166534);">
+        <span class="hero-tag">Telehealth Virtual Care</span>
+        <h1 class="hero-title">Book an Online Video Consultation</h1>
+        <p class="hero-subtitle">Connect with licensed doctors from the comfort of home via encrypted HD video calls.</p>
+      </div>
+
+      <div style="background:white; border-radius:24px; padding:2.5rem; max-width:640px; margin:0 auto; border:1px solid var(--border); box-shadow:var(--shadow-md);">
+        <h3 style="font-size:1.35rem; font-weight:800; margin-bottom:0.5rem;">Request Virtual Telehealth Visit</h3>
+        <p style="font-size:0.85rem; color:var(--slate); margin-bottom:1.5rem;">Fill out your details below. A secure meeting room link will be emailed immediately.</p>
+
+        <form id="consult-form" style="display:flex; flex-direction:column; gap:1.25rem;">
+          <div class="filter-group">
+            <label class="filter-label">Patient Full Name</label>
+            <input type="text" id="consult-name" class="filter-input" placeholder="e.g. Sarah Connor" required />
+          </div>
+          <div class="filter-group">
+            <label class="filter-label">Email Address</label>
+            <input type="email" id="consult-email" class="filter-input" placeholder="patient@example.com" required />
+          </div>
+          <div class="filter-group">
+            <label class="filter-label">Required Medical Specialty</label>
+            <select id="consult-specialty" class="filter-select" required>
+              <option value="General Physician">General Physician</option>
+              <option value="Cardiologist">Cardiologist</option>
+              <option value="Dermatologist">Dermatologist</option>
+              <option value="Orthopedic Doctor">Orthopedic Doctor</option>
+              <option value="Pediatrician">Pediatrician</option>
+              <option value="Gynecologist">Gynecologist</option>
+              <option value="Dentist">Dentist</option>
+              <option value="Ophthalmologist">Ophthalmologist</option>
+              <option value="ENT Specialist">ENT Specialist</option>
+              <option value="Neurologist">Neurologist</option>
+              <option value="Gastroenterologist">Gastroenterologist</option>
+              <option value="Pulmonologist">Pulmonologist</option>
+              <option value="Nephrologist">Nephrologist</option>
+              <option value="Endocrinologist">Endocrinologist</option>
+              <option value="Psychiatrist">Psychiatrist</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label class="filter-label">Brief Description of Symptoms</label>
+            <textarea id="consult-symptoms" class="filter-input" style="height:90px; resize:none;" placeholder="Describe what you are experiencing..." required></textarea>
+          </div>
+          <button type="submit" class="btn-teal" style="padding:0.95rem; font-size:0.95rem;">Request Online Consultation Link</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- 6. COMPARE VIEW -->
+    <section class="tab-view" id="tab-compare">
+      <div style="margin-bottom:1.5rem;">
+        <h2 style="font-size:1.75rem; font-weight:900;">Compare Healthcare Providers</h2>
+        <p style="color:var(--slate);">Select two specialists side-by-side to evaluate consultation fees, experience, ratings, and accepted insurance plans.</p>
+      </div>
+
+      <div class="filter-bar" style="grid-template-columns: 1fr 1fr; margin-bottom:1.5rem;">
+        <div class="filter-group">
+          <label class="filter-label">Select Specialist #1</label>
+          <select id="compare-item-1" class="filter-select"></select>
+        </div>
+        <div class="filter-group">
+          <label class="filter-label">Select Specialist #2</label>
+          <select id="compare-item-2" class="filter-select"></select>
+        </div>
+      </div>
+
+      <div class="compare-table-container">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Comparison Criteria</th>
+              <th id="compare-head-1">Provider #1</th>
+              <th id="compare-head-2">Provider #2</th>
+            </tr>
+          </thead>
+          <tbody id="compare-table-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 7. HOSPITAL/DOCTOR DETAILS VIEW -->
+    <section class="tab-view" id="tab-details">
+      <div id="details-content">
+        <!-- Dynamically rendered via JS -->
+      </div>
+    </section>
+
+    <!-- 8. LOGIN / PATIENT PROFILE PORTAL VIEW -->
+    <section class="tab-view" id="tab-portal">
+      <div id="portal-content">
+        <!-- Dynamically rendered via JS -->
+      </div>
+    </section>
+
+    <!-- 9. 24/7 ER LOCATOR VIEW -->
+    <section class="tab-view" id="tab-er">
+      <div class="er-banner">
+        <div class="er-badge">🚨 EMERGENCY RESPONSE NETWORK</div>
+        <h1 style="font-size:2rem; font-weight:900; margin:0.5rem 0;">24/7 Real-Time ER & Trauma Locator</h1>
+        <p style="font-size:0.95rem; opacity:0.9; max-width:700px;">
+          View live emergency department wait times, real-time ER bed capacities, trauma levels, and instant 1-click hotline emergency dialing.
+        </p>
+      </div>
+
+      <div class="er-controls">
+        <button class="er-filter-btn active" data-er-filter="all">All ER Facilities</button>
+        <button class="er-filter-btn" data-er-filter="fastest">⚡ Lowest Wait Time (<15m)</button>
+        <button class="er-filter-btn" data-er-filter="level1">🏥 Level 1 Trauma</button>
+      </div>
+
+      <div class="grid-cards" id="er-locator-grid">
+        <!-- Dynamically rendered via JS -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Appointment Booking Modal -->
+  <div class="modal-backdrop" id="booking-modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div>
+          <h3 style="font-size:1.25rem; font-weight:800;" id="modal-doctor-name">Book Appointment</h3>
+          <p style="font-size:0.75rem; color:var(--slate);" id="modal-doctor-meta"></p>
+        </div>
+        <button class="modal-close" aria-label="Close modal">✕</button>
+      </div>
+
+      <form id="booking-form" style="display:flex; flex-direction:column; gap:1rem;">
+        <div class="filter-group">
+          <label class="filter-label">Patient Name</label>
+          <input type="text" id="patient-name" class="filter-input" placeholder="Full Name" required />
+        </div>
+        <div class="filter-group">
+          <label class="filter-label">Phone Number</label>
+          <input type="tel" id="patient-phone" class="filter-input" placeholder="+91 98765 43210" required />
+        </div>
+        <div class="filter-group">
+          <label class="filter-label">Appointment Date</label>
+          <input type="date" id="booking-date" class="filter-input" value="2026-08-31" required />
+        </div>
+        <div class="filter-group">
+          <label class="filter-label">Preferred Time Slot</label>
+          <select id="booking-slot" class="filter-select" required></select>
+        </div>
+        <button type="submit" class="btn-primary" style="padding:0.85rem; margin-top:0.5rem; font-weight:800;">Confirm Appointment</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Appointment Success Modal -->
+  <div class="modal-backdrop" id="success-modal">
+    <div class="modal-box" style="text-align:center; max-width:480px;">
+      <div style="font-size:3.5rem; margin-bottom:0.5rem; line-height:1;">✅</div>
+      <h3 style="font-size:1.5rem; font-weight:900; color:#166534; margin-bottom:0.25rem;">Appointment Confirmed!</h3>
+      <p style="font-size:0.85rem; color:var(--slate); margin-bottom:1.25rem;">Your medical appointment has been successfully scheduled.</p>
+      
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:16px; padding:1.25rem; text-align:left; font-size:0.85rem; margin-bottom:1.5rem; display:flex; flex-direction:column; gap:0.6rem;" id="success-modal-details">
+        <!-- Dynamically rendered -->
+      </div>
+
+      <button class="btn-primary" id="btn-go-portal" style="width:100%; padding:0.9rem; font-size:0.95rem;">View in Patient Profile →</button>
+    </div>
+  </div>
+
+  <!-- Login Modal -->
+  <div class="modal-backdrop" id="login-modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 style="font-size:1.25rem; font-weight:800;">Patient Portal Login</h3>
+        <button class="modal-close" aria-label="Close modal">✕</button>
+      </div>
+      <form id="login-form" style="display:flex; flex-direction:column; gap:1rem;">
+        <div class="filter-group">
+          <label class="filter-label">Email Address</label>
+          <input type="email" id="login-email" class="filter-input" placeholder="patient@example.com" required />
+        </div>
+        <div class="filter-group">
+          <label class="filter-label">Password</label>
+          <input type="password" id="login-password" class="filter-input" placeholder="••••••••" required />
+        </div>
+        <button type="submit" class="btn-primary" style="padding:0.85rem; margin-top:0.5rem;">Login to Patient Portal</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
